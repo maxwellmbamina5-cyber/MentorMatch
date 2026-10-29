@@ -28,8 +28,11 @@ The schema file creates all application tables, indexes, constraints, and
 timestamp triggers. It expects the database to exist first.
 
 The default connection is `localhost:5432`, database `mentormatch`, user
-`postgres`, and an empty password. Set these environment variables to use
-different credentials:
+`postgres`. The PHP configuration defaults to an empty password, but a local
+PostgreSQL installation may require the password set during installation. Set
+`DB_PASSWORD` in the environment of the PHP server process when required; do
+not commit database passwords to the repository. The connection can be
+overridden with these environment variables:
 
 ```text
 DB_HOST
