@@ -1,0 +1,119 @@
+/* assets/css/dashboard.css - Additional styles for admin dashboard */
+
+/* Gold, Silver, Bronze badges */
+.badge-gold {
+    background-color: #ffd700;
+    color: #856404;
+}
+
+.badge-silver {
+    background-color: #c0c0c0;
+    color: #495057;
+}
+
+.badge-bronze {
+    background-color: #cd7f32;
+    color: white;
+}
+
+/* Stat card animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stat-card {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.stat-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.stat-card:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.stat-card:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .welcome-banner .progress-stats {
+        margin-top: 15px;
+    }
+    
+    .welcome-banner .text-end {
+        text-align: left !important;
+    }
+    
+    .quick-action-btn {
+        padding: 12px;
+    }
+    
+    .quick-action-btn i {
+        font-size: 1.5rem;
+    }
+    
+    .dashboard-chart {
+        height: 180px !important;
+    }
+}
+
+/* Table row hover effect */
+.table-row-clickable td:first-child {
+    padding-left: 15px;
+}
+
+/* Notification pulse animation */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.badge-pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .bg-light {
+        background-color: #2d2d2d !important;
+    }
+    
+    .notification-item {
+        background-color: #2d2d2d;
+        color: #e9ecef;
+    }
+    
+    .notification-item:hover {
+        background-color: #3d3d3d;
+    }
+    
+    .quick-action-btn.bg-light {
+        background-color: #2d2d2d !important;
+        color: #e9ecef !important;
+    }
+    
+    .quick-action-btn:hover {
+        background-color: #3d3d3d !important;
+    }
+    
+    .table-light {
+        background-color: #2d2d2d;
+        color: #e9ecef;
+    }
+    
+    .table-light th {
+        background-color: #3d3d3d;
+        color: #e9ecef;
+    }
+}
