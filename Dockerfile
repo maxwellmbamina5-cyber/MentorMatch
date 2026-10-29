@@ -13,8 +13,8 @@ RUN apt-get update \
 WORKDIR /var/www/html
 COPY . .
 
-RUN mkdir -p /var/www/html/uploads/certificates /var/www/html/uploads/profiles \
-    && chown -R www-data:www-data /var/www/html/uploads
+RUN mkdir -p /var/www/html/uploads/certificates /var/www/html/uploads/profiles /var/www/html/backend/backups \
+    && chown -R www-data:www-data /var/www/html/uploads /var/www/html/backend/backups
 
 COPY docker/ports.conf /etc/apache2/ports.conf
 COPY docker/000-default.conf /etc/apache2/sites-available/000-default.conf

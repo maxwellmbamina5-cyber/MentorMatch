@@ -1,0 +1,56 @@
+# .htaccess
+RewriteEngine On
+
+# Redirect to login if not logged in
+RewriteCond %{REQUEST_URI} !^/login\.php
+RewriteCond %{REQUEST_URI} !^/register\.php
+RewriteCond %{REQUEST_URI} !^/verify\.php
+RewriteCond %{REQUEST_URI} !^/assets/
+RewriteCond %{REQUEST_URI} !^/api/
+RewriteCond %{REQUEST_URI} !^/uploads/
+RewriteRule ^$ login.php [L]
+
+# Error pages
+ErrorDocument 404 /mentormatch/404.php
+ErrorDocument 403 /mentormatch/403.php
+
+# Prevent directory listing
+Options -Indexes
+
+# Protect sensitive files
+<FilesMatch "\.(sql|log|ini|conf|json|yml|yaml)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Protect config directory
+RewriteRule ^config/ - [F,L]
+
+# Protect vendor directory
+RewriteRule ^vendor/ - [F,L]
+
+# Security Headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "DENY"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
+
+# Prevent access to .htaccess and .htpasswd
+<Files .htaccess>
+    Order allow,deny
+    Deny from all
+</Files>
+<Files .htpasswd>
+    Order allow,deny
+    Deny from all
+</Files>
+
+# PHP Settings
+<IfModule mod_php7.c>
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
+    php_value max_execution_time 300
+    php_value max_input_time 300
+</IfModule>
