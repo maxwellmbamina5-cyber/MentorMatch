@@ -8,10 +8,12 @@ databases:
 services:
   - type: web
     name: mentormatch
-    runtime: docker
+    runtime: node
     plan: starter
     region: frankfurt
-    healthCheckPath: /login.php
+    buildCommand: yarn install --frozen-lockfile && yarn build
+    startCommand: yarn start
+    healthCheckPath: /api/health
     disk:
       name: mentormatch-uploads
       mountPath: /var/www/html/uploads
@@ -31,3 +33,5 @@ services:
         value: /
       - key: PORT
         value: "10000"
+      - key: SESSION_SECRET
+        generateValue: true

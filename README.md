@@ -6,9 +6,9 @@ account pages, mentor search, and session APIs. The remaining role dashboards,
 payments, admin workflows, and scheduled jobs still use the PHP code in
 `frontend/` and `backend/`.
 
-The Render Blueprint remains configured for Docker/PHP until those workflows
-are migrated. Do not switch the production service to the Node runtime before
-feature parity is reached.
+The Render Blueprint uses the native Node runtime and Yarn. This is an
+incomplete migration: the legacy role dashboards, payments, admin workflows,
+and scheduled jobs remain in PHP and are not served by the Node deployment.
 
 To build the Next.js application locally:
 
@@ -19,4 +19,5 @@ yarn start
 ```
 
 The Node app requires `DATABASE_URL` and a `SESSION_SECRET` containing at least
-32 characters. See `.env.example` for local configuration.
+32 characters. Render generates the session secret from the Blueprint. See
+`.env.example` for local configuration.
