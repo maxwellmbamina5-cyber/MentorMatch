@@ -3,7 +3,9 @@
 import { redirect } from "next/navigation";
 import { AuthenticationError, registerUser } from "@/lib/auth";
 
-const VALID_ROLES = new Set(["mentor", "mentee"]);
+function isRegistrableRole(role: string): role is "mentor" | "mentee" {
+  return role === "mentor" || role === "mentee";
+}
 
 export async function registerAction(formData: FormData): Promise<void> {
   const name = String(formData.get("name") ?? "").trim();
@@ -30,7 +32,7 @@ export async function registerAction(formData: FormData): Promise<void> {
     error = "Password must be at least 6 characters.";
   } else if (phone.length < 6 || phone.length > 40) {
     error = "Please enter a valid phone number.";
-  } else if (!VALID_ROLES.has(role)) {
+  } else if (!isRegistrableRole(role)) {
     error = "Please select a valid account type.";
   } else if (role === "mentor" && (!courseCode || !grade)) {
     error = "Mentors must select a course and grade.";
@@ -43,6 +45,9 @@ export async function registerAction(formData: FormData): Promise<void> {
   if (error) {
     redirect(`/register?error=${encodeURIComponent(error)}`);
   }
+  if (!isRegistrableRole(role)) {
+    redirect("/register?error=Please%20select%20a%20valid%20account%20type");
+  }
 
   try {
     await registerUser({
@@ -50,7 +55,7 @@ export async function registerAction(formData: FormData): Promise<void> {
       email,
       phone,
       password,
-      role: role as "mentor" | "mentee",
+      role,
       programme,
       yearOfStudy,
       courseCode,
