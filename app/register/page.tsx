@@ -35,7 +35,15 @@ const programmes = [
 ];
 
 export default async function RegisterPage({ searchParams }: RegisterPageProps) {
-  const [{ error }, courses] = await Promise.all([searchParams, listCourses()]);
+  const { error } = await searchParams;
+  let courses: Awaited<ReturnType<typeof listCourses>> = [];
+  let databaseAvailable = true;
+  try {
+    courses = await listCourses();
+  } catch (databaseError) {
+    console.error("Failed to load registration courses from PostgreSQL.", databaseError);
+    databaseAvailable = false;
+  }
 
   return (
     <main className="container py-4">
@@ -46,6 +54,12 @@ export default async function RegisterPage({ searchParams }: RegisterPageProps) 
         </div>
         <div className="card-body p-4 p-md-5">
           {error && <div className="alert alert-danger" role="alert">{error}</div>}
+          {!databaseAvailable && (
+            <div className="alert alert-warning" role="alert">
+              Registration is temporarily unavailable because the database could not be reached.
+              Configure the local PostgreSQL connection and load the application schema, then retry.
+            </div>
+          )}
           <form action={registerAction}>
             <div className="row g-3">
               <div className="col-md-6">
@@ -120,7 +134,13 @@ export default async function RegisterPage({ searchParams }: RegisterPageProps) 
                 </div>
               </div>
               <div className="col-12">
-                <button type="submit" className="btn btn-primary btn-lg w-100">Create account</button>
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-lg w-100"
+                  disabled={!databaseAvailable}
+                >
+                  Create account
+                </button>
               </div>
             </div>
           </form>

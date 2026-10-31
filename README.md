@@ -21,3 +21,8 @@ yarn start
 The Node app requires `DATABASE_URL` and a `SESSION_SECRET` containing at least
 32 characters. Render generates the session secret from the Blueprint. See
 `.env.example` for local configuration.
+
+For local development, create `.env.local` with either `DATABASE_URL` or the
+`DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, and `DB_PASSWORD` settings used by
+the PHP app. Load `backend/database/schema.sql` into the local PostgreSQL
+database before using registration and other database-backed pages.

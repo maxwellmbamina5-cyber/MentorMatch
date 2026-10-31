@@ -10,11 +10,15 @@ export function getPool(): Pool {
   }
 
   const connectionString = process.env.DATABASE_URL;
-  if (!connectionString) {
-    throw new Error("DATABASE_URL is required to connect to PostgreSQL.");
-  }
-
-  const pool = new Pool({ connectionString });
+  const pool = connectionString
+    ? new Pool({ connectionString })
+    : new Pool({
+        host: process.env.DB_HOST ?? "localhost",
+        port: Number(process.env.DB_PORT ?? "5432"),
+        database: process.env.DB_NAME ?? "mentormatch",
+        user: process.env.DB_USER ?? "postgres",
+        password: process.env.DB_PASSWORD ?? "",
+      });
   globalForPostgres.postgresPool = pool;
   return pool;
 }
