@@ -1,0 +1,782 @@
+/* assets/css/mobile.css - Mobile-First UI/UX Improvements */
+
+/* ============================================
+   GLOBAL MOBILE SETTINGS
+   ============================================ */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ============================================
+   TOUCH-FRIENDLY BUTTONS & LINKS
+   ============================================ */
+.btn, 
+a.btn,
+button,
+input[type="submit"],
+input[type="button"],
+.quick-action-btn,
+.list-group-item,
+.nav-link,
+.dropdown-item {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+}
+
+.btn-sm {
+    min-height: 36px;
+    min-width: 36px;
+}
+
+/* ============================================
+   BETTER FORM ELEMENTS
+   ============================================ */
+input, 
+select, 
+textarea {
+    font-size: 16px !important; /* Prevents iOS zoom */
+    border-radius: 10px;
+    padding: 12px 16px;
+}
+
+.form-control, 
+.form-select {
+    min-height: 50px;
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus, 
+.form-select:focus {
+    border-color: var(--mm-primary);
+    box-shadow: 0 0 0 3px rgba(23, 107, 103, 0.15);
+}
+
+.form-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+}
+
+/* ============================================
+   CARD IMPROVEMENTS
+   ============================================ */
+.card {
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-header {
+    border-radius: 16px 16px 0 0 !important;
+    padding: 16px 20px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+}
+
+/* ============================================
+   STAT CARDS - MOBILE
+   ============================================ */
+.stat-card .card-body {
+    padding: 16px 18px;
+}
+
+.stat-card h2 {
+    font-size: 1.8rem;
+}
+
+.stat-card .stat-icon {
+    font-size: 1.8rem;
+    opacity: 0.25;
+}
+
+/* ============================================
+   QUICK ACTION BUTTONS - MOBILE
+   ============================================ */
+.quick-action-btn {
+    padding: 14px 10px;
+    border-radius: 12px;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.quick-action-btn i {
+    font-size: 1.8rem;
+    margin-bottom: 4px;
+}
+
+.quick-action-btn small {
+    font-size: 0.7rem;
+    line-height: 1.2;
+}
+
+/* ============================================
+   TABLES - MOBILE RESPONSIVE
+   ============================================ */
+.table-responsive {
+    border-radius: 12px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table {
+    font-size: 0.85rem;
+}
+
+.table thead th {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 12px 8px;
+    white-space: nowrap;
+}
+
+.table td {
+    padding: 10px 8px;
+    vertical-align: middle;
+}
+
+/* ============================================
+   NAVBAR - MOBILE
+   ============================================ */
+.navbar {
+    padding: 10px 12px;
+    min-height: 60px;
+}
+
+.navbar-brand {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.navbar-toggler {
+    padding: 8px 10px;
+    border: none;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-nav .nav-link {
+    padding: 10px 16px;
+    font-size: 0.95rem;
+}
+
+.dropdown-menu {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+    padding: 8px 0;
+}
+
+.dropdown-item {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+}
+
+/* ============================================
+   SIDEBAR - MOBILE
+   ============================================ */
+@media (max-width: 767.98px) {
+    .list-group {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        gap: 6px;
+        padding: 4px 0 12px 0;
+        margin-bottom: 0;
+        scrollbar-width: none;
+    }
+    
+    .list-group::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .list-group-item {
+        flex: 0 0 auto;
+        border: none;
+        border-radius: 50px !important;
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        background: #f8f9fa;
+        margin-right: 4px;
+        min-height: 40px;
+    }
+    
+    .list-group-item i {
+        margin-right: 4px;
+    }
+    
+    .list-group-item.active {
+        background: var(--mm-primary);
+        color: white;
+    }
+}
+
+/* ============================================
+   WELCOME BANNER - MOBILE
+   ============================================ */
+.welcome-banner {
+    padding: 18px 20px;
+    border-radius: 16px;
+}
+
+.welcome-banner h3 {
+    font-size: 1.2rem;
+}
+
+.welcome-banner small {
+    font-size: 0.85rem;
+}
+
+.welcome-banner .progress-stats .stat-item {
+    padding: 6px 12px;
+    min-width: 70px;
+}
+
+.welcome-banner .progress-stats .stat-item .number {
+    font-size: 1.1rem;
+}
+
+.welcome-banner .progress-stats .stat-item .label {
+    font-size: 0.65rem;
+}
+
+/* ============================================
+   NOTIFICATIONS - MOBILE
+   ============================================ */
+.notification-item {
+    padding: 12px 14px;
+    font-size: 0.9rem;
+    border-radius: 10px;
+}
+
+/* ============================================
+   MODALS - MOBILE
+   ============================================ */
+.modal-content {
+    border-radius: 20px;
+    border: none;
+    margin: 10px;
+}
+
+.modal-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    padding: 16px 20px;
+}
+
+/* ============================================
+   BADGES - MOBILE
+   ============================================ */
+.badge {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border-radius: 50px;
+}
+
+/* ============================================
+   ALERTS - MOBILE
+   ============================================ */
+.alert {
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 0.9rem;
+    border: none;
+}
+
+/* ============================================
+   PAGINATION - MOBILE
+   ============================================ */
+.pagination .page-link {
+    min-height: 40px;
+    min-width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    border-radius: 8px;
+    margin: 0 2px;
+}
+
+/* ============================================
+   REGISTRATION FORM - MOBILE
+   ============================================ */
+.registration-card {
+    border-radius: 16px;
+}
+
+.registration-header {
+    padding: 20px;
+    border-radius: 16px 16px 0 0;
+}
+
+.registration-header h2 {
+    font-size: 1.3rem;
+}
+
+.registration-header p {
+    font-size: 0.85rem;
+}
+
+.step-indicators {
+    gap: 8px;
+}
+
+.step-indicator {
+    width: 34px;
+    height: 34px;
+    font-size: 0.8rem;
+}
+
+.step-line {
+    max-width: 40px;
+}
+
+.role-selector {
+    flex-direction: column;
+    gap: 10px;
+}
+
+.role-option {
+    padding: 16px;
+}
+
+.role-option i {
+    font-size: 2rem;
+}
+
+/* ============================================
+   SUCCESS DASHBOARD - MOBILE
+   ============================================ */
+.success-dashboard .success-icon {
+    font-size: 3.5rem;
+}
+
+.success-dashboard .status-badge {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+}
+
+.success-dashboard .status-badge .spinner {
+    width: 16px;
+    height: 16px;
+}
+
+.info-card {
+    padding: 14px 16px;
+}
+
+.info-card .label {
+    font-size: 0.7rem;
+}
+
+.info-card .value {
+    font-size: 0.95rem;
+}
+
+.steps-timeline {
+    padding-left: 24px;
+}
+
+.step-item .step-number {
+    width: 24px;
+    height: 24px;
+    font-size: 0.7rem;
+    left: -18px;
+}
+
+.step-item .step-title {
+    font-size: 0.9rem;
+}
+
+.step-item .step-desc {
+    font-size: 0.8rem;
+}
+
+/* ============================================
+   SEARCH RESULTS - MOBILE
+   ============================================ */
+.search-result-item {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   APPLICATION CARDS - MOBILE
+   ============================================ */
+.application-card {
+    border-radius: 12px;
+}
+
+.application-card .card-body {
+    padding: 14px 16px;
+}
+
+.application-avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+}
+
+/* ============================================
+   PAYMENT CARDS - MOBILE
+   ============================================ */
+.payment-card {
+    border-radius: 12px;
+}
+
+/* ============================================
+   CHART CONTAINERS - MOBILE
+   ============================================ */
+.dashboard-chart {
+    height: 180px !important;
+}
+
+/* ============================================
+   TOOLTIPS - MOBILE
+   ============================================ */
+[data-bs-toggle="tooltip"] {
+    cursor: pointer;
+}
+
+/* ============================================
+   BOTTOM NAVIGATION BAR (Optional)
+   ============================================ */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid #e9ecef;
+    display: none;
+    z-index: 1050;
+    padding: 4px 0;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
+}
+
+.bottom-nav .nav-item {
+    flex: 1;
+    text-align: center;
+    padding: 6px 0;
+    color: #6c757d;
+    font-size: 0.65rem;
+    text-decoration: none;
+    border: none;
+    background: none;
+}
+
+.bottom-nav .nav-item i {
+    font-size: 1.4rem;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.bottom-nav .nav-item.active {
+    color: #176b67;
+}
+
+.bottom-nav .nav-item .badge {
+    position: absolute;
+    top: -4px;
+    right: 50%;
+    transform: translateX(calc(50% + 12px));
+    font-size: 0.6rem;
+    padding: 2px 6px;
+}
+
+@media (max-width: 767.98px) {
+    .bottom-nav {
+        display: flex;
+        padding: 6px max(8px, env(safe-area-inset-right)) calc(6px + env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left));
+    }
+    
+    body:has(.bottom-nav) {
+        padding-bottom: calc(76px + env(safe-area-inset-bottom));
+    }
+    
+    .container-fluid {
+        padding-bottom: 10px;
+    }
+}
+
+/* ============================================
+   SWIPE TO REFRESH INDICATOR
+   ============================================ */
+.pull-to-refresh {
+    text-align: center;
+    padding: 10px;
+    color: #6c757d;
+    font-size: 0.8rem;
+}
+
+/* ============================================
+   LOADING SPINNERS
+   ============================================ */
+.spinner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    backdrop-filter: blur(4px);
+}
+
+.spinner-overlay .spinner-border {
+    width: 48px;
+    height: 48px;
+}
+
+/* ============================================
+   TOAST NOTIFICATIONS
+   ============================================ */
+.toast-container {
+    z-index: 9999;
+}
+
+.toast {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+}
+
+/* ============================================
+   BOTTOM SHEET (Mobile Modal Alternative)
+   ============================================ */
+.bottom-sheet {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 20px 20px 0 0;
+    z-index: 1060;
+    transition: bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.15);
+}
+
+.bottom-sheet.show {
+    bottom: 0;
+}
+
+.bottom-sheet .sheet-handle {
+    width: 40px;
+    height: 4px;
+    background: #dee2e6;
+    border-radius: 2px;
+    margin: 12px auto 8px;
+}
+
+.bottom-sheet .sheet-header {
+    padding: 12px 20px;
+    border-bottom: 1px solid #e9ecef;
+    font-weight: 600;
+}
+
+.bottom-sheet .sheet-body {
+    padding: 20px;
+}
+
+.bottom-sheet-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1059;
+    display: none;
+}
+
+.bottom-sheet-overlay.show {
+    display: block;
+}
+
+/* ============================================
+   RESPONSIVE TEXT SIZES
+   ============================================ */
+@media (max-width: 575.98px) {
+    .display-1 { font-size: 3rem; }
+    .display-2 { font-size: 2.5rem; }
+    .display-3 { font-size: 2rem; }
+    .display-4 { font-size: 1.5rem; }
+    .display-5 { font-size: 1.2rem; }
+    .display-6 { font-size: 1rem; }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.3rem; }
+    h4 { font-size: 1.1rem; }
+    h5 { font-size: 1rem; }
+    h6 { font-size: 0.9rem; }
+}
+
+/* ============================================
+   ACCESSIBILITY IMPROVEMENTS
+   ============================================ */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+:focus-visible {
+    outline: 3px solid #176b67;
+    outline-offset: 2px;
+}
+
+@media (max-width: 575.98px) {
+    .container,
+    .container-fluid {
+        --bs-gutter-x: 1.15rem;
+    }
+
+    .table-responsive {
+        margin-bottom: 1rem;
+    }
+
+    .table-responsive > .table {
+        margin-bottom: 0;
+    }
+
+    .auth-page {
+        padding: 1rem 0;
+    }
+
+    .auth-form-panel {
+        padding: 1.5rem 1.2rem;
+    }
+
+    .toast-container {
+        right: 0.5rem !important;
+        left: 0.5rem !important;
+        width: auto;
+        padding-bottom: calc(0.75rem + env(safe-area-inset-bottom)) !important;
+    }
+}
+
+/* ============================================
+   DARK MODE SUPPORT (Optional)
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+    .card,
+    .dropdown-menu,
+    .modal-content,
+    .bottom-sheet {
+        background: #1a1a2e;
+        color: #e9ecef;
+    }
+    
+    .card-header,
+    .modal-header {
+        background: #16213e;
+        border-bottom-color: #2d2d44;
+    }
+    
+    .form-control,
+    .form-select {
+        background: #2d2d44;
+        color: #e9ecef;
+        border-color: #3d3d55;
+    }
+    
+    .form-control:focus,
+    .form-select:focus {
+        border-color: var(--mm-primary);
+    }
+    
+    .list-group-item {
+        background: #2d2d44;
+        color: #e9ecef;
+    }
+    
+    .list-group-item.active {
+        background: var(--mm-primary);
+        color: white;
+    }
+    
+    .table-light {
+        background: #2d2d44;
+        color: #e9ecef;
+    }
+    
+    .table-light th {
+        background: #3d3d55;
+        color: #e9ecef;
+    }
+    
+    .bg-light {
+        background-color: #1a1a2e !important;
+    }
+    
+    .text-muted {
+        color: #8a8a9a !important;
+    }
+    
+    .border {
+        border-color: #2d2d44 !important;
+    }
+    
+    .alert-info {
+        background: #1a2a4a;
+        color: #8ab4f8;
+        border-color: #2a3a5a;
+    }
+    
+    .alert-warning {
+        background: #3a2a1a;
+        color: #f8b84a;
+        border-color: #4a3a2a;
+    }
+    
+    .alert-danger {
+        background: #3a1a1a;
+        color: #f84a4a;
+        border-color: #4a2a2a;
+    }
+    
+    .alert-success {
+        background: #1a3a1a;
+        color: #4af84a;
+        border-color: #2a4a2a;
+    }
+}
